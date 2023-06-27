@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPT-3.5</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@1.1.3/dist/css/bootstrap-night.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/markdown-it@latest/dist/markdown-it.min.js"></script>
     <link rel="stylesheet"
@@ -24,16 +22,13 @@
             border: 1px solid #84719040;
             font-size: 15px;
         }
-
         #chat3 .form-control {
             border-color: transparent;
         }
-
         #chat3 .form-control:focus {
             border-color: transparent;
             box-shadow: inset 0px 0px 0px 1px transparent;
         }
-
         .badge-dot {
             border-radius: 50%;
             height: 10px;
@@ -41,35 +36,28 @@
             margin-left: 2.9rem;
             margin-top: -.75rem;
         }
-
         .row-height {
             height: 100vh;
         }
-
         .mycol {
             height: 100%;
             overflow-y: scroll;
         }
-
         ::-webkit-scrollbar {
             width: 0px;
             background: transparent;
         }
-
         * {
             -ms-overflow-style: none !important;
         }
-
         .hljs-copy-wrapper {
             position: relative;
             overflow: hidden
         }
-
         .hljs-copy-wrapper:hover .hljs-copy-button,
         .hljs-copy-button:focus {
             transform: translateX(0)
         }
-
         .hljs-copy-button {
             position: absolute;
             transform: translateX(calc(100% + 1.125em));
@@ -87,27 +75,22 @@
             background-position: center;
             transition: background-color 200ms ease, transform 200ms ease-out
         }
-
         .hljs-copy-button:hover {
             border-color: #ffffff44
         }
-
         .hljs-copy-button:active {
             border-color: #ffffff66
         }
-
         .hljs-copy-button[data-copied="true"] {
             text-indent: 0;
             width: auto;
             background-image: none
         }
-
         @media(prefers-reduced-motion) {
             .hljs-copy-button {
                 transition: none
             }
         }
-
         .hljs-copy-alert {
             clip: rect(0 0 0 0);
             clip-path: inset(50%);
@@ -117,7 +100,6 @@
             white-space: nowrap;
             width: 1px
         }
-
         .myhl {
             font-size: .875em;
             color: #45b5aa;
@@ -125,7 +107,6 @@
         }
     </style>
 </head>
-
 <body class="text-white">
     <div class="container">
         <div class="row">
@@ -136,9 +117,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="">
-
                                         <div class="pt-3 pe-3" style="position: relative;" id="response">
-
                                             <div class="d-flex flex-row justify-content-start" style="width:85%;">
                                                 <img src="./../static/assets/gpt3.png" alt="avatar 1"
                                                     style="width: 45px; height: 100%;">
@@ -151,29 +130,23 @@
                                                         Message</p>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div style="height:13em;"></div>
             </div>
-
         </div>
     </div>
-
 
     <div>
         <div class="fixed-bottom p-2 container" style="background-color:#222222;">
             <div class="row justify-content-center">
                 <div class="col-6 text-center">
                     <div id="alertpopup" class="alert alert-info" style="display:none;" role="alert">
-
                     </div>
                 </div>
             </div>
@@ -187,20 +160,13 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
+    
     <script>
         hljs.addPlugin(new CopyButtonPlugin());
         var subBtn = document.getElementById('sub');
         var promptInput = document.getElementById('prompt');
         var responseDiv = document.getElementById('response');
         const markdown = window.markdownit();
-
-
 
         function formatDateTime() {
             date = new Date();
@@ -218,11 +184,9 @@
 
             // Get the AM/PM indicator
             var ampm = date.getHours() >= 12 ? "PM" : "AM";
-
-            // Get the month name using the array
+            
             var month = monthNames[date.getMonth()];
 
-            // Get the day of the month
             var day = date.getDate();
 
             // Format the date and time string
@@ -230,8 +194,6 @@
 
             return formattedDateTime;
         }
-
-
         async function gpt3resp() {
 
             window.tmp_text = ''
@@ -262,7 +224,6 @@
                 body: JSON.stringify({
                     prompt: promptInput.value
                 })
-
             })
             const reader = await response.body.getReader();
 
@@ -291,30 +252,22 @@
                 document.querySelectorAll(`code`).forEach((el) => {
                     hljs.highlightElement(el);
                 });
-
-
             }
-
             return 'True'
-
         }
 
 
         subBtn.addEventListener('click', async function () {
-
             x = await gpt3resp()
 
             if (x !== 'True') {
                 showAlertAndRemove(x)
             }
-
         });
 
         function showAlertAndRemove(content) {
-            // Get the alert element
             var alertElement = document.getElementById('alertpopup');
             alertElement.innerText = content
-            // Show the alert
             alertElement.style.display = 'block';
 
             // After 5 seconds, hide the alert
@@ -328,5 +281,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
